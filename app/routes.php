@@ -11,6 +11,8 @@
 |
 */
 
+Route::pattern('person', '[0-9]+');
+
 Route::get('/', function()
 {
     return View::make('login_v2');
@@ -24,5 +26,7 @@ Route::group(array('before' => 'auth'), function (){
 	Route::get('logout', array('uses' => 'UsuariosController@logout', 'as' => 'login_v2'));
 	Route::get('welcome', array('uses' => 'UsuariosController@welcome', 'as' => 'index'));
 	Route::resource('usuario', 'UsuariosController');		
+  Route::get('person/{person}/delete', 'PersonController@delete');
+  Route::post('person', 'PersonController@save');
 });
 //Route::controller('DashboardController');
