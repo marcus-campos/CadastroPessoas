@@ -18,9 +18,10 @@ class UsuariosController extends BaseController {
 
 	public function validate()
     {
+        // User::create(['username' => 'admin', 'password' => Hash::make('admin')]);
     	$credentials = array(
-    		'username' => 'teste',
-    		'password' => '123'
+    		'username' => Input::get('username'),
+    		'password' => Input::get('password')
     	);
 
     	if(Auth::attempt($credentials)) {
